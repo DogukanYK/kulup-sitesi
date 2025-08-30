@@ -153,7 +153,7 @@ export default function Home() {
     </div>
 
 
-  return (
+        )return (
     <main className="min-h-screen bg-white text-black">
       {/* NAVBAR */}
       <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
