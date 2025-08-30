@@ -1,82 +1,64 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { FiMenu } from "react-icons/fi";
-import { Button } from "./ui/Button";
 
-const nav = [
-  { href: "/hakkimizda", label: "Hakkımızda", variant: "maroon" as const },
-  { href: "/ekibimiz", label: "Ekibimiz", variant: "maroon" as const },
-  { href: "/kategoriler", label: "Kategoriler", variant: "primary" as const },
-  { href: "/iletisim", label: "İletişim", variant: "gray" as const },
-  { href: "/oylama", label: "OYLAMA", variant: "warning" as const },
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+type Variant = "primary" | "vote" | "about" | "outline";
+
+const items: Array<{ href: string; label: string; variant: Variant }> = [
+  { href: "/hakkimizda", label: "Hakkımızda", variant: "about" }, // bordo
+  { href: "/iletisim",   label: "İletişim ve Katılım", variant: "outline" }, // beyaz/çizgili
+  { href: "/oylama",      label: "OYLAMA",      variant: "vote"    }, // altın
 ];
+
+function classes(variant: Variant, active: boolean) {
+  const base =
+    "px-3 py-1.5 rounded-md text-sm font-semibold transition-colors border";
+  switch (variant) {
+    case "primary": // #0F2CE8
+      return `${base} bg-[#0F2CE8] text-white hover:bg-[#0c23b7] border-transparent`;
+    case "vote": // #E1BF30
+      return `${base} bg-[#E1BF30] text-black hover:bg-[#cda72a] border-transparent`;
+    case "about": // #8D2538
+      return `${base} bg-[#8D2538] text-white hover:bg-[#731f2e] border-transparent`;
+    case "outline":
+      return `${base} bg-white text-black hover:bg-gray-50 border-gray-300`;
+    default:
+      return base;
+  }
+}
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
-      <div className="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between">
-        {/* Logo: sabit alan ayırıp menünün sola kaymasını engeller */}
-        <Link href="/" className="flex items-center gap-2 w-40">
+    <header className="sticky top-0 z-40 bg-white">
+      <div className="mx-auto max-w-6xl px-4 flex h-16 items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/kulup-logo-siyah.png"
-            alt="KHAS Media All"
-            width={400}
-            height={160}
+            src="/kulup-logo-siyah.png" // prod’da küçük/harf dosya adı!
+            alt="KHAS Yeni Medya Kulübü"
+            width={120}
+            height={48}
+            className="h-8 w-auto"
             priority
-            className="h-10 md:h-12 w-auto object-contain"
           />
         </Link>
 
-        {/* Desktop Menü */}
-        <nav className="hidden md:flex gap-4 text-sm ml-auto">
-          {nav.map((item) => (
-            <Button
-              key={item.href}
-              href={item.href}
-              variant={item.variant}
-              className={isActive(item.href) ? "ring-2 ring-offset-2 ring-blue-600" : ""}
-            >
-              {item.label}
-            </Button>
-          ))}
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden h-9 w-9 rounded-md border border-gray-300 grid place-items-center"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-          aria-label="Menüyü aç/kapat"
-        >
-          <FiMenu />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {open && (
-        <div id="mobile-menu" className="md:hidden border-t border-gray-200 bg-white">
-          <div className="px-6 py-3 flex flex-col gap-2 text-sm">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`py-2 ${isActive(item.href) ? "text-blue-700" : "text-black"}`}
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
+        {/* Nav (desktop) */}
+        <nav className="hidden md:flex items-center gap-2">
+          {items.map(({ href, label, variant }) => {
+            const active = pathname === href;
+            return (
+              <Link key={href} href={href} className={classes(variant, active)}>
+                {label}
               </Link>
-            ))}
-          </div>
-        </div>
-      )}
+            );
+          })}
+        </nav>
+      </div>
     </header>
   );
 }

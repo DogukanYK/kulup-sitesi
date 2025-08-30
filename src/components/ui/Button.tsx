@@ -29,26 +29,17 @@ type CommonProps = {
 
 /** Buton olarak kullanım */
 type ButtonAsButton = ButtonHTMLAttributes<HTMLButtonElement> &
-  CommonProps & {
-    href?: undefined;
-  };
+  CommonProps & { href?: undefined };
 
 /** Link olarak kullanım */
 type ButtonAsLink = AnchorHTMLAttributes<HTMLAnchorElement> &
-  CommonProps & {
-    href: string;
-  };
+  CommonProps & { href: string };
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 /** Tek bileşen: href varsa Link, yoksa button döndürür */
 export default function Button(props: ButtonProps) {
-  const {
-    variant = "primary",
-    size = "md",
-    className,
-    ...rest
-  } = props as ButtonProps;
+  const { variant = "primary", size = "md", className, ...rest } = props;
 
   const classes = clsx(
     "inline-flex items-center justify-center rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-white",
@@ -59,9 +50,7 @@ export default function Button(props: ButtonProps) {
 
   if ("href" in props && props.href) {
     const { href, ...anchorRest } = props as ButtonAsLink;
-    return (
-      <Link href={href} className={classes} {...anchorRest} />
-    );
+    return <Link href={href} className={classes} {...anchorRest} />;
   }
 
   const buttonRest = rest as ButtonAsButton;

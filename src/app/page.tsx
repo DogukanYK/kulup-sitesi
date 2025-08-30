@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // src/app/page.tsx
 import Link from "next/link";
-import { Button } from "../components/ui/Button";
+import  Button  from "../components/ui/Button";
 
 export default function Home() {
 
