@@ -22,8 +22,8 @@ export default function Home() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <h1 className="text-4xl sm:text-5xl font-bold text-blue-700">Media All Ödül Töreni</h1>
         <p className="mt-4 text-gray-700 max-w-3xl">
-          Kadir Has Üniversitesi Yeni Medya Kulübü’nün öncülüğünde düzenlenen, üniversite tarihindeki ilk
-          kapsamlı ödül töreni. Yılın “en”lerini belirleyerek başarıyı onurlandırmayı ve medya dünyasına
+          Kadir Has Üniversitesi Yeni Medya Kulübü&apos;nün öncülüğünde düzenlenen, üniversite tarihindeki ilk
+          kapsamlı ödül töreni. Yılın &quot;en&quot;lerini belirleyerek başarıyı onurlandırmayı ve medya dünyasına
           ilham kaynağı olmayı amaçlar.
         </p>
       </section>
@@ -32,14 +32,14 @@ export default function Home() {
       <section id="hakkimizda" className="max-w-6xl mx-auto px-6 py-12">
         <h2 className="text-2xl font-semibold mb-4">Hakkımızda</h2>
         <p className="text-gray-700 mb-4">
-          KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü’nün öncülüğünde, İletişim Fakültesi
+          KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü&apos;nün öncülüğünde, İletişim Fakültesi
           bünyesinde düzenlenen, üniversite tarihindeki bu amaçla yapılacak olan ilk kapsamlı ödül törenidir. Bu özel
-          etkinlik, yılın “en”lerini belirleyerek hem başarıyı onurlandırmayı hem de medya ve iletişim dünyasında bir
+          etkinlik, yılın &quot;en&quot;lerini belirleyerek hem başarıyı onurlandırmayı hem de medya ve iletişim dünyasında bir
           ilham kaynağı oluşturmayı amaçlamaktadır.
         </p>
         <p className="text-gray-700 mb-4">
-          Kadir Has Üniversitesi çağdaş eğitimi ve yenilikçi vizyonuyla Türkiye’nin öncü eğitim kurumlarından biridir.
-          İletişim Fakültesi'nin güçlü akademik temelleri ve Yeni Medya Kulübü’nün dinamik yapısı sayesinde, öğrenciler
+          Kadir Has Üniversitesi çağdaş eğitimi ve yenilikçi vizyonuyla Türkiye&apos;nin öncü eğitim kurumlarından biridir.
+          İletişim Fakültesi&apos;nin güçlü akademik temelleri ve Yeni Medya Kulübü&apos;nün dinamik yapısı sayesinde, öğrenciler
           çağın gereksinimlerine uygun bir şekilde yetiştirilmektedir. KHAS Media All Ödülleri bu vizyonun bir uzantısı
           olarak topluluğa ve sektöre katkı sunmayı hedefler.
         </p>
