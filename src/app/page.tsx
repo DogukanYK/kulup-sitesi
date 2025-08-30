@@ -55,31 +55,8 @@ export default function Home() {
         </p>
       </section>
 
-      {/* İKİ SÜTUN: Hakkımızda / Ekibimiz */}
-      <section className="border-y border-gray-200 bg-gray-50 py-12">
-        <div className="max-w-6xl mx-auto px-6 grid gap-10 md:grid-cols-2">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold">Hakkımızda</h2>
-            <p className="text-[15px] text-gray-700">
-              KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü&apos;nün öncülüğünde,
-              İletişim Fakültesi bünyesinde düzenlenen; yılın &quot;en&quot;lerini belirleyerek hem başarıyı
-              onurlandırmayı hem de medya ve iletişim dünyasında ilham oluşturmayı amaçlayan bir organizasyondur.
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold">Ekibimiz</h2>
-            <p className="text-[15px] text-gray-700">
-              Yeni Medya Kulübü; yenilikleri takip eden, yaratıcı projeler üreten bir öğrenci topluluğudur.
-              2024–2025 itibarıyla 11 kişilik yönetim kurulu ve 160 üyeden oluşmaktadır.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* KATEGORİLER */}
       <section className="max-w-6xl mx-auto px-6 py-12">
-        <h2 className="text-2xl font-semibold mb-4">Kategoriler</h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[15px]">
           {categories.map((x) => (
             <li key={x} className="rounded-md border border-gray-200 bg-white px-4 py-2">
@@ -100,14 +77,13 @@ export default function Home() {
           </div>
           <div>
             <h3 className="font-semibold mb-2">E-posta</h3>
-            <p className="text-[15px] text-gray-700">mediaall@khas.edu.tr</p>
+            <p className="text-[15px] text-blue-700 underline"><a href="mailto:khasyenimedya@khas.edu.tr">khasyenimedya@khas.edu.tr</a></p>
           </div>
           <div>
             <h3 className="font-semibold mb-2">Sosyal Medya</h3>
-            <div className="flex gap-3 text-[15px]">
-              <a className="underline hover:no-underline" href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-              <a className="underline hover:no-underline" href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a className="underline hover:no-underline" href="https://youtube.com" target="_blank" rel="noreferrer">YouTube</a>
+            <div className="flex flex-col gap-2 text-[15px]">
+              <a className="underline text-blue-700 hover:no-underline" href="https://www.instagram.com/khasyenimedyakulubu/" target="_blank" rel="noreferrer">Instagram: @khasyenimedyakulubu</a>
+              <a className="underline text-blue-700 hover:no-underline" href="https://tr.ee/xHticeUEf6" target="_blank" rel="noreferrer">Üyelik Başvuru Formu</a>
             </div>
           </div>
         </div>
