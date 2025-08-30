@@ -1,32 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 // src/app/page.tsx
 import Link from "next/link";
-import Navbar from "../components/Navbar";
+import { Button } from "../components/ui/Button";
 
 export default function Home() {
-  // Kategoriler listesi
-  const categories = [
-    "EN İYİ DİZİ",
-    "EN İYİ KADIN OYUNCU",
-    "EN İYİ ERKEK OYUNCU",
-    "EN İYİ DİZİ ÇİFTİ",
-    "EN İYİ YÖNETMEN",
-    "EN İYİ SENARİST",
-    "EN İYİ DİJİTAL DİZİ",
-    "EN İYİ SUNUCU",
-    "EN İYİ KADIN ŞARKICI",
-    "EN İYİ ERKEK ŞARKICI",
-    "EN İYİ ŞARKI",
-    "EN İYİ MÜZİK GRUBU",
-    "EN İYİ KADIN INFLUENCER",
-    "EN İYİ ERKEK INFLUENCER",
-    "EN İYİ YOUTUBE KANALI",
-    "EN İYİ YAYINCI",
-    "EN İYİ DİJİTAL YAYIN PLATFORMU",
-    "EN İYİ MARKA İŞ BİRLİĞİ",
-    "EN İYİ E-TİCARET SİTESİ",
-    "EN İYİ MEDYA/REKLAM AJANSI",
-  ];
 
   return (
     <main className="min-h-screen bg-white text-black">
@@ -40,14 +17,10 @@ export default function Home() {
         <h1 className="mt-4 text-4xl sm:text-5xl font-bold leading-tight text-blue-700">
           Media All Ödül Töreni
         </h1>
-          <div className="mt-6 flex gap-3">
-        <Link href="/kategoriler" className="px-4 py-2 rounded-md bg-[#0F2CE8] text-white hover:bg-[#0d26c7]">
-          Kategoriler
-         </Link>
-         <Link href="/oylama" className="px-4 py-2 rounded-md bg-[#E1BF30] text-black hover:bg-[#caa628] font-semibold">
-          OYLAMA
-         </Link>
-          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+    <Button href="/kategoriler" variant="primary">Kategoriler</Button>
+    <Button href="/oylama" variant="warning">OYLAMA</Button>
+  </div>
         <p className="mt-4 max-w-3xl text-[15px] text-gray-700">
           KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü&apos;nün öncülüğünde,
           üniversite tarihindeki ilk kapsamlı ödül törenidir. Yılın &quot;en&quot;lerini belirleyerek
