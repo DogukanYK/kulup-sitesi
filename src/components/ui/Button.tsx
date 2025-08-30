@@ -1,64 +1,69 @@
-"use client";
-
 import Link from "next/link";
-import { ButtonHTMLAttributes } from "react";
+import clsx from "clsx";
+import type { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 
-// clsx yerine kendi küçük helper fonksiyonumuz
-function cn(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
-}
+/** Site paleti (tasarım kılavuzundaki renkler) */
+const VARIANT_STYLES = {
+  primary: "bg-[#0F2CE8] text-white hover:bg-[#0d26c9]",
+  gold: "bg-[#E1BF30] text-black hover:bg-[#caa628]",
+  maroon: "bg-[#8D2538] text-white hover:bg-[#731d2d]",
+  neutral: "bg-black text-white hover:bg-neutral-800",
+  outline: "bg-white text-black border border-gray-300 hover:bg-gray-50",
+} as const;
 
-type Variant = "primary" | "vote" | "about" | "neutral";
+type Variant = keyof typeof VARIANT_STYLES;
 type Size = "sm" | "md" | "lg";
 
+const SIZE_STYLES: Record<Size, string> = {
+  sm: "px-3 py-1.5 text-sm",
+  md: "px-4 py-2 text-[15px]",
+  lg: "px-5 py-2.5 text-base",
+};
+
+/** Ortak props */
 type CommonProps = {
   variant?: Variant;
   size?: Size;
   className?: string;
 };
 
-type ButtonProps = CommonProps &
-  ButtonHTMLAttributes<HTMLButtonElement> & {
-    href?: never;
+/** Buton olarak kullanım */
+type ButtonAsButton = ButtonHTMLAttributes<HTMLButtonElement> &
+  CommonProps & {
+    href?: undefined;
   };
 
-type LinkButtonProps = CommonProps & {
-  href: string;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
-
-export function Button(props: ButtonProps | LinkButtonProps) {
-  const { variant = "primary", size = "md", className, ...rest } = props as any;
-
-  const base =
-    "inline-flex items-center justify-center font-semibold rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
-
-  const sizes: Record<Size, string> = {
-    sm: "text-sm px-3 py-1.5",
-    md: "text-sm px-4 py-2",
-    lg: "text-base px-5 py-2.5",
+/** Link olarak kullanım */
+type ButtonAsLink = AnchorHTMLAttributes<HTMLAnchorElement> &
+  CommonProps & {
+    href: string;
   };
 
-  const variants: Record<Variant, string> = {
-    primary:
-      "bg-[#0F2CE8] text-white hover:bg-[#0c23b7] focus:ring-[#0F2CE8]/40", // mavi
-    vote:
-      "bg-[#E1BF30] text-black hover:bg-[#cda72a] focus:ring-[#E1BF30]/40", // sarı
-    about:
-      "bg-[#8D2538] text-white hover:bg-[#731f2e] focus:ring-[#8D2538]/40", // bordo
-    neutral:
-      "bg-[#C4C2C2] text-black hover:bg-[#b7b5b5] focus:ring-[#C4C2C2]/40", // gri
-  };
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
-  const classes = cn(base, sizes[size], variants[variant], className);
+/** Tek bileşen: href varsa Link, yoksa button döndürür */
+export default function Button(props: ButtonProps) {
+  const {
+    variant = "primary",
+    size = "md",
+    className,
+    ...rest
+  } = props as ButtonProps;
+
+  const classes = clsx(
+    "inline-flex items-center justify-center rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-white",
+    VARIANT_STYLES[variant],
+    SIZE_STYLES[size],
+    className
+  );
 
   if ("href" in props && props.href) {
-    const { href, ...aRest } = rest;
+    const { href, ...anchorRest } = props as ButtonAsLink;
     return (
-      <Link href={props.href} className={classes} {...(aRest as any)} />
+      <Link href={href} className={classes} {...anchorRest} />
     );
   }
 
-  return <button className={classes} {...(rest as any)} />;
+  const buttonRest = rest as ButtonAsButton;
+  return <button className={classes} {...buttonRest} />;
 }
-
-export default Button;
