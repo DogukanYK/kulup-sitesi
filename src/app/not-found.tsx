@@ -3,7 +3,7 @@ import { Button } from "../components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="min-h-[70vh] grid place-items-center px-6">
+    <section className="min-h-[70vh] flex items-center justify-center px-6 bg-white">
       <div className="text-center">
         {/* Büyük logo */}
         <Image
@@ -24,6 +24,6 @@ export default function NotFound() {
           <Button href="/" variant="primary">Ana sayfaya dön</Button>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
