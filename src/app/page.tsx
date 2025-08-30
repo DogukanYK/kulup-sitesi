@@ -41,7 +41,17 @@ export default function Home() {
         <h1 className="mt-4 text-4xl sm:text-5xl font-bold leading-tight text-blue-700">
           Media All Ödül Töreni
         </h1>
-
+          <div className="mt-6 flex gap-3">
+        <Link href="/hakkimizda" className="px-4 py-2 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]">
+          Hakkımızda
+         </Link>
+        <Link href="/kategoriler" className="px-4 py-2 rounded-md bg-[#0F2CE8] text-white hover:bg-[#0d26c7]">
+          Kategoriler
+         </Link>
+         <Link href="/oylama" className="px-4 py-2 rounded-md bg-[#E1BF30] text-black hover:bg-[#caa628] font-semibold">
+          OYLAMA
+         </Link>
+          </div>
         <p className="mt-4 max-w-3xl text-[15px] text-gray-700">
           KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü&apos;nün öncülüğünde,
           üniversite tarihindeki ilk kapsamlı ödül törenidir. Yılın &quot;en&quot;lerini belirleyerek
