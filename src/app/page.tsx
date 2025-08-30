@@ -55,16 +55,6 @@ export default function Home() {
         </p>
       </section>
 
-      {/* KATEGORİLER */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[15px]">
-          {categories.map((x) => (
-            <li key={x} className="rounded-md border border-gray-200 bg-white px-4 py-2">
-              {x}
-            </li>
-          ))}
-        </ul>
-      </section>
 
       {/* İLETİŞİM BLOĞU */}
       <section className="border-t border-gray-200">
