@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={`${spaceGrotesk.className} bg-white text-black dark:bg-neutral-900 dark:text-neutral-100 antialiased`}>
+      <body className={`${spaceGrotesk.className} bg-white text-black antialiased`}>
         <Providers>
           <Navbar />
           <main className={quicksand.className}>{children}</main>
