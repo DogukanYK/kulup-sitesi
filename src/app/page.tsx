@@ -152,4 +152,38 @@ export default function Home() {
       </footer>
     </div>
   );
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-white text-black">
+      {/* NAVBAR */}
+      <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
+        <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
+          <Link href="/" className="font-semibold text-blue-700">KHAS Media All</Link>
+          <nav className="hidden md:flex gap-6 text-sm">
+            <Link href="/hakkimizda" className="hover:text-blue-700">Hakkımızda</Link>
+            <Link href="/ekibimiz" className="hover:text-blue-700">Ekibimiz</Link>
+            <Link href="/kategoriler" className="hover:text-blue-700">Kategoriler</Link>
+            <Link href="/iletisim" className="hover:text-blue-700">İletişim</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h1 className="text-4xl sm:text-5xl font-bold text-blue-700">
+          Media All Ödül Töreni
+        </h1>
+        <p className="mt-4 max-w-3xl text-gray-700 text-[15px]">
+          KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü’nün
+          öncülüğünde düzenlenen, üniversite tarihindeki ilk kapsamlı ödül törenidir.
+        </p>
+        <div className="mt-6 flex gap-3">
+          <Link href="/hakkimizda" className="px-4 py-2 border rounded-md text-sm font-medium border-gray-300 hover:border-blue-700">Hakkımızda</Link>
+          <Link href="/kategoriler" className="px-4 py-2 border rounded-md text-sm font-medium border-blue-700 text-blue-700">Kategoriler</Link>
+        </div>
+      </section>
+    </main>
+  );
 }
