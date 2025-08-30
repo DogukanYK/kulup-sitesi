@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // src/app/page.tsx
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   // Kategoriler listesi
@@ -29,20 +30,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white text-black">
-      {/* NAVBAR */}
-      <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
-        <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
-          <Link href="/" className="font-semibold tracking-tight text-blue-700">
-            KHAS Media All
-          </Link>
-          <nav className="hidden md:flex gap-6 text-sm">
-            <Link className="hover:text-blue-700" href="/hakkimizda">Hakkımızda</Link>
-            <Link className="hover:text-blue-700" href="/ekibimiz">Ekibimiz</Link>
-            <Link className="hover:text-blue-700" href="/kategoriler">Kategoriler</Link>
-            <Link className="hover:text-blue-700" href="/iletisim">İletişim</Link>
-          </nav>
-        </div>
-      </header>
+      <Navbar />
 
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">
