@@ -32,7 +32,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 w-40">
           <Image
-            src="/Kulup-logo-siyah.png" // public/ altındaki siyah logo
+            src="/kulup-logo-siyah.png" // public/ altındaki siyah logo
             alt="KHAS Media All"
             width={800}
             height={300}
