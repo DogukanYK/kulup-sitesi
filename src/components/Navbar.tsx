@@ -2,100 +2,73 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { Quicksand } from "next/font/google";
-import { useTheme } from "next-themes";
-import { FiSun, FiMoon, FiMenu } from "react-icons/fi";
-
-// Quiche* bold yerine: Quicksand 700 (yuvarlak, okunaklı, butonlarda güçlü görünür)
-const navFont = Quicksand({ subsets: ["latin"], weight: ["700"] });
+import { useState } from "react";
+import { FiMenu } from "react-icons/fi";
+import { Button } from "./ui/Button";
 
 const nav = [
-  { href: "/hakkimizda", label: "Hakkımızda" },
-  { href: "/ekibimiz", label: "Ekibimiz" },
-  { href: "/kategoriler", label: "Kategoriler" },
-  { href: "/iletisim", label: "İletişim" },
-  { href: "/oylama", label: "OYLAMA" },
+  { href: "/hakkimizda", label: "Hakkımızda", variant: "maroon" as const },
+  { href: "/ekibimiz", label: "Ekibimiz", variant: "maroon" as const },
+  { href: "/kategoriler", label: "Kategoriler", variant: "primary" as const },
+  { href: "/iletisim", label: "İletişim", variant: "gray" as const },
+  { href: "/oylama", label: "OYLAMA", variant: "warning" as const },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
   const isActive = (href: string) => pathname === href;
 
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo: sabit alan ayırıp menünün sola kaymasını engeller */}
         <Link href="/" className="flex items-center gap-2 w-40">
           <Image
-            src="/kulup-logo-siyah.png" // public/ altındaki siyah logo
+            src="/kulup-logo-siyah.png"
             alt="KHAS Media All"
-            width={800}
-            height={300}
+            width={400}
+            height={160}
             priority
             className="h-10 md:h-12 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop Menü */}
-        <nav className={`hidden md:flex gap-4 text-sm ml-auto ${navFont.className}`}>
-          <Link
-            href="/hakkimizda"
-            className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]"
-          >
-            Hakkımızda
-          </Link>
-          <Link
-            href="/ekibimiz"
-            className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]"
-          >
-            Ekibimiz
-          </Link>
-          <Link
-            href="/kategoriler"
-            className="px-3 py-1 rounded-md bg-[#0F2CE8] text-white hover:bg-[#0d26c7]"
-          >
-            Kategoriler
-          </Link>
-          <Link
-            href="/iletisim"
-            className="px-3 py-1 rounded-md bg-[#C4C2C2] text-black hover:bg-[#a7a5a5]"
-          >
-            İletişim
-          </Link>
-          <Link
-            href="/oylama"
-            className="px-3 py-1 rounded-md bg-[#E1BF30] text-black hover:bg-[#caa628] font-semibold"
-          >
-            OYLAMA
-          </Link>
+        <nav className="hidden md:flex gap-4 text-sm ml-auto">
+          {nav.map((item) => (
+            <Button
+              key={item.href}
+              href={item.href}
+              variant={item.variant}
+              className={isActive(item.href) ? "ring-2 ring-offset-2 ring-blue-600" : ""}
+            >
+              {item.label}
+            </Button>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <button
-            className="md:hidden h-9 w-9 rounded-md border border-gray-300 dark:border-neutral-700 grid place-items-center"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-          >
-            <FiMenu />
-          </button>
-        </div>
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden h-9 w-9 rounded-md border border-gray-300 grid place-items-center"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label="Menüyü aç/kapat"
+        >
+          <FiMenu />
+        </button>
       </div>
 
-      {/* Mobile Menü */}
+      {/* Mobile menu */}
       {open && (
-        <div id="mobile-menu" className={`md:hidden border-t border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 ${navFont.className}`}>
+        <div id="mobile-menu" className="md:hidden border-t border-gray-200 bg-white">
           <div className="px-6 py-3 flex flex-col gap-2 text-sm">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`py-1 ${isActive(item.href) ? "text-blue-700" : "text-black"}`}
+                className={`py-2 ${isActive(item.href) ? "text-blue-700" : "text-black"}`}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
