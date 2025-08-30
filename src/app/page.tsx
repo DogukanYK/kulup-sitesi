@@ -59,21 +59,6 @@ export default function Home() {
           üniversite tarihindeki ilk kapsamlı ödül törenidir. Yılın &quot;en&quot;lerini belirleyerek
           başarıyı onurlandırmayı ve medya dünyasına ilham olmayı amaçlar.
         </p>
-
-        <div className="mt-6 flex gap-3">
-          <Link
-            href="/hakkimizda"
-            className="px-4 py-2 border rounded-md text-sm font-medium border-gray-300 hover:border-blue-700"
-          >
-            Hakkımızda
-          </Link>
-          <Link
-            href="/kategoriler"
-            className="px-4 py-2 border rounded-md text-sm font-medium border-blue-700 text-blue-700"
-          >
-            Kategoriler
-          </Link>
-        </div>
       </section>
 
       {/* İKİ SÜTUN: Hakkımızda / Ekibimiz */}
@@ -86,9 +71,6 @@ export default function Home() {
               İletişim Fakültesi bünyesinde düzenlenen; yılın &quot;en&quot;lerini belirleyerek hem başarıyı
               onurlandırmayı hem de medya ve iletişim dünyasında ilham oluşturmayı amaçlayan bir organizasyondur.
             </p>
-            <Link href="/hakkimizda" className="text-[15px] font-medium text-blue-700">
-              Daha fazla bilgi →
-            </Link>
           </div>
 
           <div className="space-y-4">
@@ -97,9 +79,6 @@ export default function Home() {
               Yeni Medya Kulübü; yenilikleri takip eden, yaratıcı projeler üreten bir öğrenci topluluğudur.
               2024–2025 itibarıyla 11 kişilik yönetim kurulu ve 160 üyeden oluşmaktadır.
             </p>
-            <Link href="/ekibimiz" className="text-[15px] font-medium text-blue-700">
-              Ekibi gör →
-            </Link>
           </div>
         </div>
       </section>
