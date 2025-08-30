@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // src/app/page.tsx
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   // Kategoriler listesi
