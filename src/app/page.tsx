@@ -1,103 +1,126 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Oylama modu: Vercel → Project → Settings → Environment Variables
+  // NEXT_PUBLIC_VOTING = on/off
+  // NEXT_PUBLIC_VOTING_FORM_URL = https://... (Google Forms/Tally)
+  // NEXT_PUBLIC_VOTING_NAME = 2025 Güz Dönemi oylaması (opsiyonel)
+  const votingOn = process.env.NEXT_PUBLIC_VOTING?.toLowerCase() === "on";
+  const formUrl = process.env.NEXT_PUBLIC_VOTING_FORM_URL || "";
+  const votingName = process.env.NEXT_PUBLIC_VOTING_NAME || "Oylama";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+  if (votingOn) {
+    // OYLAMA MODU
+    return (
+      <div className="min-h-screen grid place-items-center p-8 sm:p-16">
+        <main className="w-full max-w-3xl space-y-6">
+          <h1 className="text-3xl sm:text-4xl font-bold">Oylama Açık 🎉</h1>
+          <p className="text-neutral-400">
+            KHAS Yeni Medya Kulübü {votingName} şu anda aktif. Oy kullanmak için
+            aşağıdaki seçeneklerden birini kullanabilirsin.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/oylama"
+              className="inline-flex items-center justify-center rounded-xl px-4 py-2 bg-indigo-600 hover:bg-indigo-500 transition text-white"
+            >
+              Oylamaya Git
+            </Link>
+            {formUrl && (
+              <a
+                href={formUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-xl px-4 py-2 bg-neutral-800 hover:bg-neutral-700 transition text-white"
+              >
+                Formu Aç
+              </a>
+            )}
+          </div>
+          <p className="text-xs text-neutral-500">
+            Not: Oylama dönemi bitince site otomatik olarak normal ana sayfaya döner.
+          </p>
+        </main>
+      </div>
+    );
+  }
+
+  // NORMAL KULÜP MODU
+  return (
+    <div className="min-h-screen p-8 sm:p-16">
+      <main className="max-w-5xl mx-auto space-y-10">
+        <section>
+          <h1 className="text-3xl sm:text-4xl font-bold">
+            KHAS Yeni Medya Kulübü’ne Hoş Geldiniz 👋
+          </h1>
+          <p className="mt-3 text-neutral-400 max-w-2xl">
+            Etkinlikler, duyurular ve üyelik bilgileri burada. Oylama tarihleri
+            geldiğinde ana sayfa otomatik olarak "oylama modu"na geçer.
+          </p>
+        </section>
+
+        <section className="grid gap-4 sm:grid-cols-2">
+          <article className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+            <h3 className="text-lg font-medium">Etkinlikler</h3>
+            <p className="text-neutral-400 text-sm mt-2">
+              Yaklaşan etkinlikleri ve arşivi görüntüle.
+            </p>
+            <Link
+              href="/etkinlikler"
+              className="inline-flex mt-3 items-center justify-center rounded-xl px-4 py-2 bg-indigo-600 hover:bg-indigo-500 transition text-white"
+            >
+              Etkinlikler
+            </Link>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+            <h3 className="text-lg font-medium">Kulübe Katıl</h3>
+            <p className="text-neutral-400 text-sm mt-2">
+              Aramıza katıl ve etkinliklerden haberdar ol.
+            </p>
+            <Link
+              href="/katil"
+              className="inline-flex mt-3 items-center justify-center rounded-xl px-4 py-2 bg-indigo-600 hover:bg-indigo-500 transition text-white"
+            >
+              Katıl
+            </Link>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+            <h3 className="text-lg font-medium">Duyurular</h3>
+            <p className="text-neutral-400 text-sm mt-2">
+              Kulüp içi haberler ve blog yazıları.
+            </p>
+            <Link
+              href="/blog"
+              className="inline-flex mt-3 items-center justify-center rounded-xl px-4 py-2 bg-indigo-600 hover:bg-indigo-500 transition text-white"
+            >
+              Duyurular
+            </Link>
+          </article>
+
+          <article className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+            <h3 className="text-lg font-medium">İletişim</h3>
+            <p className="text-neutral-400 text-sm mt-2">
+              Sosyal medya ve e-posta kanallarımız.
+            </p>
+            <Link
+              href="/iletisim"
+              className="inline-flex mt-3 items-center justify-center rounded-xl px-4 py-2 bg-indigo-600 hover:bg-indigo-500 transition text-white"
+            >
+              İletişim
+            </Link>
+          </article>
+        </section>
+
+        <section className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+          <p className="text-sm text-neutral-400">
+            Yönetim için not: Oylamayı erken aç/kapatmak istersen Vercel →
+            <span className="mx-1 rounded bg-black/30 px-1.5 py-0.5">NEXT_PUBLIC_VOTING=on</span>
+            veya <span className="mx-1 rounded bg-black/30 px-1.5 py-0.5">off</span> ortam değişkenini kullan.
+          </p>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
