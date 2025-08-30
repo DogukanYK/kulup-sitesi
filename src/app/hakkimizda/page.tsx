@@ -1,24 +1,32 @@
-export default function Hakkimizda() {
+export const metadata = {
+  title: "Hakkımızda • KHAS Media All",
+  description: "KHAS Media All Ödülleri hakkında",
+};
+
+export default function HakkimizdaPage() {
   return (
-    <main className="min-h-screen bg-white text-black">
-      <section className="max-w-6xl mx-auto px-6 py-12 space-y-4">
-        <h1 className="text-3xl font-semibold">Hakkımızda</h1>
-        <p className="text-[15px] text-gray-700">
-          KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü’nün öncülüğünde, 
-          İletişim Fakültesi bünyesinde düzenlenen, üniversite tarihindeki bu amaçla yapılacak olan ilk kapsamlı ödül törenidir. 
-          Bu özel etkinlik, yılın &quot;en&quot;lerini belirleyerek hem başarıyı onurlandırmayı hem de medya ve iletişim dünyasında 
-          bir ilham kaynağı oluşturmayı amaçlamaktadır.
+    <main className="mx-auto max-w-6xl px-4 py-10 bg-white text-black">
+      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F2CE8]">
+        Hakkımızda
+      </h1>
+
+      <section className="mt-6 leading-relaxed space-y-4 text-neutral-800">
+        <p>
+          KHAS Media All Ödülleri, Kadir Has Üniversitesi Yeni Medya Kulübü’nün
+          öncülüğünde, İletişim Fakültesi bünyesinde düzenlenen, üniversite
+          tarihindeki bu amaçla yapılacak olan ilk kapsamlı ödül törenidir.
         </p>
-        <p className="text-[15px] text-gray-700">
-          Kadir Has Üniversitesi, çağdaş eğitimi ve yenilikçi vizyonuyla Türkiye’nin öncü eğitim kurumlarından biridir. 
-          Bilginin hızla tüketildiği ve değişimin kaçınılmaz olduğu günümüzde, İletişim Fakültesi&apos;nin güçlü akademik temelleri 
-          ve Yeni Medya Kulübü’nün dinamik yapısı sayesinde, üniversite öğrencileri çağın gereksinimlerine uygun bir şekilde yetiştirilmektedir. 
-          KHAS Media All Ödülleri, bu vizyonun bir uzantısı olarak, hem üniversite topluluğuna hem de medya sektörüne katkı sunmayı hedefleyen bir girişimdir.
+        <p>
+          Bu özel etkinlik, yılın “en”lerini belirleyerek hem başarıyı
+          onurlandırmayı hem de medya ve iletişim dünyasında ilham kaynağı
+          oluşturmayı amaçlar.
         </p>
-        <p className="text-[15px] text-gray-700">
-          Bu yıl ilk kez düzenlenen ödül törenimiz, Kadir Has Üniversitesi çatısı altında bir geleneğin başlangıcını müjdeliyor. 
-          Gelecek yıllarda, medyanın farklı alanlarından ilham verici figürleri ödüllendirerek daha da büyümeyi ve üniversitemiz ile medya dünyası arasında 
-          bir köprü kurmayı hedefliyoruz.
+      </section>
+
+      <section id="ekibimiz" className="mt-12">
+        <h2 className="text-2xl font-bold text-black">Ekibimiz</h2>
+        <p className="text-neutral-700 mt-2">
+          2024–2025 eğitim-öğretim yılında 11 kişilik yönetim kurulu ve 160+ üye.
         </p>
       </section>
     </main>

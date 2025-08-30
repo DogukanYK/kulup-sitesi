@@ -1,29 +1,54 @@
-export default function Oylama(){
-  const votingRaw = process.env.NEXT_PUBLIC_VOTING ?? "";
-  const votingOn = votingRaw.toLowerCase() === "on";
-  const formUrl = process.env.NEXT_PUBLIC_VOTING_FORM_URL ?? "";
+const KATEGORILER = [
+  "EN İYİ DİZİ",
+  "EN İYİ KADIN OYUNCU",
+  "EN İYİ ERKEK OYUNCU",
+  "EN İYİ DİZİ ÇİFTİ",
+  "EN İYİ YÖNETMEN",
+  "EN İYİ SENARİST",
+  "EN İYİ DİJİTAL DİZİ",
+  "EN İYİ SUNUCU",
+  "EN İYİ KADIN ŞARKICI",
+  "EN İYİ ERKEK ŞARKICI",
+  "EN İYİ ŞARKI",
+  "EN İYİ MÜZİK GRUBU",
+  "EN İYİ KADIN INFLUENCER",
+  "EN İYİ ERKEK INFLUENCER",
+  "EN İYİ YOUTUBE KANALI",
+  "EN İYİ YAYINCI",
+  "EN İYİ DİJİTAL YAYIN PLATFORMU",
+  "EN İYİ MARKA İŞ BİRLİĞİ",
+  "EN İYİ E-TİCARET SİTESİ",
+  "EN İYİ MEDYA/REKLAM AJANSI",
+];
 
-  if (!votingOn) {
-    return (
-      <main className="min-h-screen bg-white text-black">
-        <section className="max-w-6xl mx-auto px-6 py-12">
-          <h1 className="text-3xl font-semibold">Oylama</h1>
-          <p className="mt-4 text-[15px] text-gray-700">Şu anda oylama açık değil.</p>
-        </section>
-      </main>
-    );
-  }
+export const metadata = {
+  title: "Oylama • KHAS Media All",
+  description: "Oylama sayfası ve kategoriler",
+};
 
+export default function OylamaPage() {
   return (
-    <main className="min-h-screen bg-white text-black">
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <h1 className="text-3xl font-semibold">Oylama</h1>
-        <div className="mt-6 rounded-md border border-gray-200 p-2">
-          {formUrl ? (
-            <iframe src={formUrl} width="100%" height={760} style={{ border: 0 }} title="Oylama Formu">Yükleniyor…</iframe>
-          ) : (
-            <p className="text-[15px] text-gray-700">Form adresi tanımlı değil. Yönetim: Vercel → Environment Variables → NEXT_PUBLIC_VOTING_FORM_URL ekleyin.</p>
-          )}
+    <main className="mx-auto max-w-6xl px-4 py-10 bg-white text-black">
+      <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F2CE8]">
+        Oylama
+      </h1>
+
+      <p className="mt-3 text-neutral-700">
+        Oylamalar açık olduğunda bu sayfadan katılabilirsiniz.
+      </p>
+
+      <section id="kategoriler" className="mt-10">
+        <h2 className="text-2xl font-bold text-black">Kategoriler</h2>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {KATEGORILER.map((label) => (
+            <button
+              key={label}
+              className="w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-left text-black hover:bg-gray-50"
+            >
+              {label}
+            </button>
+          ))}
         </div>
       </section>
     </main>
