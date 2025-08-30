@@ -30,19 +30,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-white border-b border-gray-200">
       <div className="max-w-6xl mx-auto h-20 px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 w-40">
           <Image
             src="/Kulup-logo-siyah.png" // public/ altındaki siyah logo
             alt="KHAS Media All"
             width={800}
             height={300}
             priority
-            className="max-h-16 md:max-h-20 h-auto w-auto object-contain"
+            className="h-10 md:h-12 w-auto object-contain"
           />
         </Link>
 
         {/* Desktop Menü */}
-        <nav className={`hidden md:flex gap-4 text-sm ${navFont.className}`}>
+        <nav className={`hidden md:flex gap-4 text-sm ml-auto ${navFont.className}`}>
           <Link
             href="/hakkimizda"
             className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]"
