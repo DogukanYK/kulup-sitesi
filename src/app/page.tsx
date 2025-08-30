@@ -37,7 +37,7 @@ export default function Home() {
             </p>
           </div>
           <div>
-            <h3 className="font-semibold mb-2">E-posta</h3>
+            <h3 className="font-semibold mb-2">E posta</h3>
             <p className="text-[15px]">
               <a
                 className="text-blue-700 underline hover:no-underline"
