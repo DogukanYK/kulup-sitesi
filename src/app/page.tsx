@@ -41,9 +41,6 @@ export default function Home() {
           Media All Ödül Töreni
         </h1>
           <div className="mt-6 flex gap-3">
-        <Link href="/hakkimizda" className="px-4 py-2 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]">
-          Hakkımızda
-         </Link>
         <Link href="/kategoriler" className="px-4 py-2 rounded-md bg-[#0F2CE8] text-white hover:bg-[#0d26c7]">
           Kategoriler
          </Link>
