@@ -2,8 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Quicksand } from "next/font/google";
+import { useTheme } from "next-themes";
+import { FiSun, FiMoon, FiMenu } from "react-icons/fi";
 
 // Quiche* bold yerine: Quicksand 700 (yuvarlak, okunaklı, butonlarda güçlü görünür)
 const navFont = Quicksand({ subsets: ["latin"], weight: ["700"] });
@@ -19,6 +21,9 @@ const nav = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const isActive = (href: string) => pathname === href;
 
   return (
@@ -70,20 +75,21 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden inline-flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 text-sm"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-menu"
-        >
-          Menü
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            className="md:hidden h-9 w-9 rounded-md border border-gray-300 dark:border-neutral-700 grid place-items-center"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
+            <FiMenu />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menü */}
       {open && (
-        <div id="mobile-menu" className={`md:hidden border-t border-gray-200 ${navFont.className}`}>
+        <div id="mobile-menu" className={`md:hidden border-t border-gray-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 ${navFont.className}`}>
           <div className="px-6 py-3 flex flex-col gap-2 text-sm">
             {nav.map((item) => (
               <Link

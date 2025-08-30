@@ -1,10 +1,13 @@
 // src/app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Navbar from "../components/Navbar";  // ✅ Navbar import
+import { Space_Grotesk, Quicksand } from "next/font/google";
+import Navbar from "../components/Navbar";
+import Providers from "./providers";
+import { Analytics } from "@vercel/analytics/react";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["700"] });
+const quicksand = Quicksand({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
   title: "KHAS Media All — Yeni Medya Kulübü",
@@ -30,10 +33,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr">
-      <body className={inter.className}>
-        {/* ✅ Navbar artık her sayfada görünecek */}
-        <Navbar />
-        <main>{children}</main>
+      <body className={`${spaceGrotesk.className} bg-white text-black dark:bg-neutral-900 dark:text-neutral-100 antialiased`}>
+        <Providers>
+          <Navbar />
+          <main className={quicksand.className}>{children}</main>
+        </Providers>
+        <Analytics />
       </body>
     </html>
   );
