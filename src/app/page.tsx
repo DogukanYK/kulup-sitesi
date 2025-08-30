@@ -30,7 +30,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white text-black">
-      <Navbar />
 
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 pt-12 pb-8">

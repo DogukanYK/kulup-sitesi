@@ -18,10 +18,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200">
-      <div className="max-w-6xl mx-auto h-16 px-6 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto h-24 px-6 flex items-center justify-between">
        <Link href="/" className="flex items-center gap-2">
-         <Image src="/Kulup-logo-beyaz.png" alt="KHAS Media All" width={40} height={40} />
-          <span className="font-semibold tracking-tight text-blue-700">KHAS Media All</span>
+         <Image src="/Kulup-logo-siyah.png" alt="" width={180} height={180} />
         </Link>
 
         {/* Desktop */}
