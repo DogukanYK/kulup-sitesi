@@ -9,6 +9,7 @@ const nav = [
   { href: "/ekibimiz", label: "Ekibimiz" },
   { href: "/kategoriler", label: "Kategoriler" },
   { href: "/iletisim", label: "İletişim" },
+  { href: "/oylama", label: "OYLAMA" },
 ];
 
 export default function Navbar() {
@@ -17,32 +18,56 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-200">
+    <header className="sticky top-0 z-40 bg-[#0F2CE8] border-b border-blue-900">
       <div className="max-w-6xl mx-auto h-24 px-6 flex items-center justify-between">
-       <Link href="/" className="flex items-center gap-2">
-         <Image src="/Kulup-logo-siyah.png" alt="" width={180} height={180} />
+        {/* ✅ Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/Kulup-logo-beyaz.png"
+            alt="KHAS Media All"
+            width={900}
+            height={400}
+            priority
+            className="h-20 md:h-24 w-auto object-contain"
+          />
         </Link>
 
-        {/* Desktop */}
+        {/* ✅ Desktop Menü */}
         <nav className="hidden md:flex gap-4 text-sm">
-  <Link href="/hakkimizda" className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]">
-    Hakkımızda
-  </Link>
-  <Link href="/ekibimiz" className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]">
-    Ekibimiz
-  </Link>
-  <Link href="/kategoriler" className="px-3 py-1 rounded-md bg-[#0F2CE8] text-white hover:bg-[#0d26c7]">
-    Kategoriler
-  </Link>
-  <Link href="/iletisim" className="px-3 py-1 rounded-md bg-[#C4C2C2] text-black hover:bg-[#a7a5a5]">
-    İletişim
-  </Link>
-  <Link href="/oylama" className="px-3 py-1 rounded-md bg-[#E1BF30] text-black hover:bg-[#caa628] font-semibold">
-    OYLAMA
-  </Link>
-</nav>
+          <Link
+            href="/hakkimizda"
+            className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]"
+          >
+            Hakkımızda
+          </Link>
+          <Link
+            href="/ekibimiz"
+            className="px-3 py-1 rounded-md bg-[#8D2538] text-white hover:bg-[#731d2d]"
+          >
+            Ekibimiz
+          </Link>
+          <Link
+             href="/kategoriler"
+            className="px-3 py-1 rounded-md bg-white text-black hover:bg-gray-200"
+        >
+             Kategoriler
 
-        {/* Mobile toggle */}
+           </Link>
+          <Link
+            href="/iletisim"
+            className="px-3 py-1 rounded-md bg-[#C4C2C2] text-black hover:bg-[#a7a5a5]"
+          >
+            İletişim
+          </Link>
+          <Link
+            href="/oylama"
+            className="px-3 py-1 rounded-md bg-[#E1BF30] text-black hover:bg-[#caa628] font-semibold"
+          >
+            OYLAMA
+          </Link>
+        </nav>
+
+        {/* ✅ Mobile Toggle */}
         <button
           className="md:hidden inline-flex items-center justify-center rounded-md border border-gray-300 px-3 py-2 text-sm"
           onClick={() => setOpen((v) => !v)}
@@ -53,7 +78,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* ✅ Mobile Menü */}
       {open && (
         <div id="mobile-menu" className="md:hidden border-t border-gray-200">
           <div className="px-6 py-3 flex flex-col gap-2 text-sm">
