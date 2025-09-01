@@ -198,7 +198,7 @@ export default function Navbar() {
 
         {/* Orta: Kulüp logo */}
         <div className="justify-self-center max-w-full">
-          <div className="relative shrink-0 max-h-none !h-12 md:!h-24 lg:!h-40 !w-[55vw] md:!w-[380px] lg:!w-[560px] max-w-[55vw] md:max-w-none">
+          <div className="relative shrink-0 max-h-none !h-12 md:!h-24 lg:!h-36 !w-[55vw] md:!w-[380px] lg:!w-[560px] max-w-[55vw] md:max-w-none">
             <Link href="/" aria-label="Anasayfa" className="block h-full w-full">
               <Image
                 src="/kulup-logo-siyah1.png"
