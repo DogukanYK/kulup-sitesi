@@ -1,5 +1,6 @@
 "use client";
 
+import type { Variants } from "framer-motion";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -18,18 +19,24 @@ const photos: Card[] = [
   { src: "/sayman.jpg",        alt: "Mali İşler / Sayman",  w: 1080, h: 1350 },
 ];
 
-const container = {
-  hidden: { opacity: 1 },
-  show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+const container: Variants = {
+  hidden: {}, // boş bırak, opaklık verme
+  show: {
+    transition: { staggerChildren: 0.15 },
+  },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24, scale: 0.98 },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: {
+      duration: 0.55,
+      // string yerine cubic-bezier dizi kullan
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 };
 
