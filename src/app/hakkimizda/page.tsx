@@ -1,4 +1,8 @@
-export const metadata = {
+/* eslint-disable react/no-unescaped-entities */
+import type { Metadata } from "next";
+import TeamStrip from "@/components/team/TeamStrip";
+
+export const metadata: Metadata = {
   title: "Hakkımızda • KHAS Media All",
   description: "KHAS Media All Ödülleri hakkında",
 };
@@ -23,11 +27,13 @@ export default function HakkimizdaPage() {
         </p>
       </section>
 
+      {/* EKİBİMİZ */}
       <section id="ekibimiz" className="mt-12">
         <h2 className="text-2xl font-bold text-black">Ekibimiz</h2>
-        <p className="text-neutral-700 mt-2">
-          2024–2025 eğitim-öğretim yılında 11 kişilik yönetim kurulu ve 160+ üye.
-        </p>
+        <p className="text-neutral-700 mt-2">2025–2026 yönetim kadrosu ve ekipler.</p>
+
+        {/* Scroll ile sırayla gelen fotoğraflar */}
+        <TeamStrip />
       </section>
     </main>
   );
