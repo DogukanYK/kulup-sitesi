@@ -61,11 +61,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${agrandir.variable} ${quiche.variable} ${tanBuster.variable}`}
     >
       {/* Keep page light theme & crisp text regardless of user/system prefs */}
-      <body className={`${quicksand.className} bg-white text-black antialiased min-h-screen`}> 
+      <body
+        className={`${quicksand.className} bg-white text-black antialiased min-h-screen flex flex-col`}
+      >
         <Providers>
           <Navbar />
-          {/* Main always white to avoid theme bleed on 404 etc. */}
-          <main className="bg-white text-black isolate">{children}</main>
+          {/* Main fills remaining height so there's no black gap below */}
+          <main className="bg-white text-black isolate flex-1">
+            {children}
+          </main>
         </Providers>
         <Analytics />
       </body>
