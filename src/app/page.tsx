@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 // src/app/page.tsx
+import Image from "next/image";
 import Button from "../components/ui/Button";
 
 export default function Home() {
@@ -8,11 +9,16 @@ export default function Home() {
       {/* === HERO (full-bleed bg + centered glass card) === */}
       <section className="relative w-full">
         {/* Background image */}
-        <div
-          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/site-bg.png')" }}
-        />
-        {/* NOTE: overlay fade removed so background is clearly visible */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/site-bg.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
 
         {/* Size & vertical centering */}
         <div className="relative z-10 h-[84vh] min-h-[380px] max-h-[1920px] flex items-center">
