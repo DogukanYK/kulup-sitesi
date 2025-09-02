@@ -7,21 +7,23 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-black">
       {/* === HERO (full-bleed bg + centered glass card) === */}
-      <section className="relative w-full">
+      {/* -mt / pt ile navbar altındaki siyah çizgiyi kapatıyoruz */}
+      <section className="relative w-full -mt-[10px] pt-[10px] md:-mt-[145px] md:pt-[14px]">
         {/* Background image */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/site-bg.webp"
+            src="/site-bg1@2x.png"
             alt=""
             fill
             priority
-            sizes="100vw"
-            style={{ objectFit: "cover" }}
+            sizes="80vw"
+            // Görseli biraz yukarı hizala ki navbarın altına “girip” dikişi örtsün
+            style={{ objectFit: "cover", objectPosition: "center 28%" }}
           />
         </div>
 
         {/* Size & vertical centering */}
-        <div className="relative z-10 h-[84vh] min-h-[380px] max-h-[1920px] flex items-center">
+        <div className="relative z-30 h-[99vh] min-h-[380px] max-h-[1920px] flex items-center">
           <div className="mx-auto max-w-6xl w-full px-3">
             {/* Readable glass card */}
             <div className="w-full md:max-w-4xl rounded-2xl bg-white/80 backdrop-blur-md ring-1 ring-black/10 shadow-lg p-6 md:p-8">

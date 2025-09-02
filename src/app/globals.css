@@ -138,3 +138,7 @@ img, svg {
   max-width: 100%;
   display: block; /* inline boşluklarını önlemek için block */
 }
+/* hafif glow */
+a:hover, button:hover {
+  filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+}
