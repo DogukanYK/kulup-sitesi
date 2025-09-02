@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 type Variant = "primary" | "vote" | "about" | "outline";
 
@@ -27,6 +27,7 @@ function classes(variant: Variant) {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     // Desktop’ta örümcek ağı (mobil kapalı)
@@ -171,7 +172,7 @@ export default function Navbar() {
         />
 
         {/* içerik */}
-        <div className="mx-auto max-w-6xl px-4 grid grid-cols-[1fr_auto_1fr] items-center gap-4 !h-28 lg:!h-36">
+        <div className="hidden md:grid mx-auto max-w-6xl px-4 grid grid-cols-[1fr_auto_1fr] items-center gap-4 !h-28 lg:!h-36">
           {/* Sol logo (boyut sabit) */}
           <Link href="https://www.khas.edu.tr" target="_blank" aria-label="Kadir Has Üniversitesi"
                 className="justify-self-start flex items-center">
@@ -200,6 +201,56 @@ export default function Navbar() {
               );
             })}
           </nav>
+        </div>
+
+        {/* Mobile navbar (desktop'u etkilemez) */}
+        <div className="md:hidden relative bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/75 border-b border-black/10">
+          <div
+            className="mx-auto max-w-6xl px-3 h-16 flex items-center justify-between"
+            style={{ paddingTop: "env(safe-area-inset-top)" }}
+          >
+            {/* Sol: KHAS logosu */}
+            <Link href="https://www.khas.edu.tr" target="_blank" aria-label="Kadir Has Üniversitesi">
+              <div className="relative h-10 w-10">
+                <Image src="/khas-logo1.png" alt="" fill className="object-contain" />
+              </div>
+            </Link>
+
+            {/* Orta: Kulüp logo */}
+            <Link href="/" aria-label="Anasayfa" className="shrink min-w-0">
+              <div className="relative h-10 w-40">
+                <Image src="/kulup-logo-siyah1.png" alt="" fill className="object-contain" priority />
+              </div>
+            </Link>
+
+            {/* Sağ: Hamburger */}
+            <button
+              type="button"
+              aria-label="Menüyü aç/kapat"
+              aria-expanded={open}
+              onClick={() => setOpen(v => !v)}
+              className="inline-flex items-center justify-center h-10 w-10 rounded-xl ring-1 ring-black/10 bg-white"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" className="text-black">
+                {open ? (
+                  <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                ) : (
+                  <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                )}
+              </svg>
+            </button>
+          </div>
+
+          {/* Açılır menü */}
+          <div className={`${open ? "block" : "hidden"} px-3 pb-3`}>
+            <div className="rounded-2xl bg-white/95 backdrop-blur ring-1 ring-black/10 shadow-lg p-3 grid gap-2">
+              {items.map(({ href, label, variant }) => (
+                <Link key={href} href={href} className={classes(variant)} onClick={() => setOpen(false)}>
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </header>
